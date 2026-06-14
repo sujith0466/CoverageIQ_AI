@@ -26,3 +26,15 @@ The core objective of CoverageIQ AI is to move beyond simple static coverage par
 
 ## Fallback Mechanisms
 If the primary LLM (Groq) is unavailable or encounters a rate limit, the system gracefully falls back to static string notifications indicating that test generation failed, returning standard heuristic analytics without crashing the dashboard.
+
+## Best Prompts Used
+The full suite of engineered prompts can be found in `prompts.md`. The core successful heuristic utilized strict output framing:
+`ONLY return valid, executable Python code. DO NOT include markdown formatting. Assume the function can be imported via 'from module import {function_name}'.`
+
+## What AI Got Wrong & Lessons Learned
+* **JSON Formatting**: Early iterations attempted to force the LLM to return complex JSON objects containing the test code, risk rationale, and metadata. The LLM frequently hallucinated broken JSON syntax or escaped characters incorrectly. 
+* **Lesson Learned**: We pivoted to requesting pure strings of Python code, using the backend (FastAPI) to structurally construct the JSON API response around the raw LLM output.
+* **Context Windows**: Passing the entire source file to the LLM to generate one missing test was too slow and expensive. We utilized Python's native `ast` library to statically chunk only the specific untested function, drastically reducing token usage and hallucination radius.
+
+## AI-Assisted Debugging Example
+During development, the AI was highly utilized to debug a critical XML parsing issue. A valid `coverage.xml` was being rejected by the backend. The AI was prompted to write a multi-file tracing script (`tests/audit.py`), which discovered that the `ElementTree` parser was prepending XML namespaces to the root tag (e.g., `{http://cobertura.sourceforge.net/xml/}coverage`), causing strict string comparison to fail. The AI subsequently generated the namespace-stripping logic currently active in `parser.py`.

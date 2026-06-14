@@ -16,8 +16,16 @@ class CoverageParserService:
             tree = ET.parse(file_path)
             root = tree.getroot()
             
-            if root.tag != 'coverage':
-                return {"success": False, "message": "Invalid XML format. Root tag must be 'coverage'."}
+            import logging
+            logger = logging.getLogger(__name__)
+            
+            tag_name = root.tag.split('}')[-1] if '}' in root.tag else root.tag
+            
+            logger.info(f"Original Root Tag: {root.tag}")
+            logger.info(f"Parsed Tag Name: {tag_name}")
+            
+            if tag_name != 'coverage':
+                return {"success": False, "message": f"XML is valid, but this is not a coverage report XML. Expected root tag <coverage>, found <{tag_name}>."}
             
             # Helper to safely parse floats/ints
             def parse_float(val):

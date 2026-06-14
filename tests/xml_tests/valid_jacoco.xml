@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<report name="test">
+  <package name="com/example">
+    <class name="com/example/MyClass">
+      <method name="hello" desc="()V" line="10">
+        <counter type="INSTRUCTION" missed="0" covered="5"/>
+      </method>
+    </class>
+  </package>
+</report>

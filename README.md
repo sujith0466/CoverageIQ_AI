@@ -96,13 +96,30 @@ npm install
 npm run dev
 ```
 
-## Sample Input
-To test the application, you can use the provided sample projects in the `sample_projects/` directory.
+## API Documentation
 
-Example flow:
-1. Navigate to the CoverageIQ Dashboard.
-2. Upload `sample_projects/banking/banking_coverage.xml`.
-3. The system will prompt you for the absolute path of the source directory. Provide the path to `sample_projects/banking`.
+FastAPI automatically generates an interactive OpenAPI (Swagger) dashboard for all backend routes. Once the backend is running, you can explore and test the endpoints directly at:
+**[http://localhost:8000/docs](http://localhost:8000/docs)**
+
+### Key Endpoints
+- **`POST /api/reports/upload`**: Accepts a Cobertura XML or ZIP upload.
+- **`POST /api/reports/{id}/analyze`**: Triggers AST tree parsing, gap detection, and risk scoring.
+- **`GET /api/reports/{id}`**: Retrieves the full JSON metadata of a parsed report.
+
+## Example Workflow (Reviewer Guide)
+
+Follow these steps to experience the full intelligence loop:
+
+1. **Start Backend**: Run `docker-compose up backend` or start natively via `uvicorn`.
+2. **Start Frontend**: Run `npm run dev` in the frontend directory.
+3. **Upload Report**: Navigate to `http://localhost:5173/upload`. Upload the provided sample file: `sample_data/banking_coverage.xml`.
+4. **Map Source Directory**: When prompted for the source code path, enter the absolute path to your local checkout of the banking module (e.g., `C:/path/to/CoverageIQ-AI/sample_projects/banking`).
+5. **Run Analysis**: Click "Analyze". The system will dynamically build an AST, reconcile coverage gaps, and invoke Groq/Gemini to write missing tests.
+6. **View Dashboard**: You will be redirected to the Executive Dashboard where you can view:
+   - **Coverage Intelligence**: Overall system health score.
+   - **Risk Analysis**: Specific lines of code graded by vulnerability.
+   - **AI Test Generation**: Actionable, generated `pytest` snippets for the riskiest gaps.
+   - **Coverage Improvement Prediction**: Calculated percentage bump if AI tests are applied.
 
 ## Sample Output
 Upon successful analysis, the dashboard will render:
@@ -159,3 +176,7 @@ def test_process_loan_approved():
 
 ## AI Usage Note
 This project heavily utilizes AI assistance (via Google Gemini) for rapid prototyping, architecture planning, and feature implementation. See [docs/AI_USAGE_NOTE.md](docs/AI_USAGE_NOTE.md) for full disclosure of AI tooling used during development.
+
+## Contributors
+* Developed as an AI coding prototype challenge submission.
+* **Core Technologies**: Groq, Gemini, React, FastAPI, PostgreSQL.
