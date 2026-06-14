@@ -13,6 +13,8 @@ from alembic import context
 # Load .env
 load_dotenv(os.path.join(os.path.dirname(__file__), "..", "..", ".env"))
 database_url = os.getenv("DATABASE_URL")
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from app.db.base_class import Base
 from app.models import User, Report, AuditLog, Function, GeneratedTest
