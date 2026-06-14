@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { reportClient, GovernanceOverviewResponse, ReportHistoryResponse } from '../api/reportClient';
-import { ShieldAlert, CheckCircle, FileText, Activity, Clock, Server, Code, GitCommit } from 'lucide-react';
+import { Clock, Server } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function GovernanceOverviewCards() {
