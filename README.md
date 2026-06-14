@@ -26,7 +26,7 @@ Traditional test coverage tools offer blind percentages (e.g., "75% covered") wi
 
 CoverageIQ AI solves this by translating raw `coverage.xml` artifacts into actionable, function-level intelligence, and autonomously generating the missing test code.
 
-## Features
+## Features Implemented
 - **Intelligent XML Parsing**: Securely parses Cobertura `coverage.xml` reports to extract module and class-level hit data.
 - **AST Code Walking**: Statically analyzes the uploaded project source tree using Python's `ast` to discover all defined functions.
 - **Coverage Gap Detection**: Reconciles AST functions against the XML report to pinpoint exactly which functions are covered, partially covered, or uncovered.
@@ -62,6 +62,37 @@ graph TD
 ```
 
 *For more details, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).*
+
+## Tools & Technologies Used
+
+### Frontend
+
+* React
+* TypeScript
+* Vite
+
+### Backend
+
+* FastAPI
+* Python
+
+### Database
+
+* PostgreSQL
+* SQLAlchemy
+
+### AI & Intelligence
+
+* Groq (Llama 3)
+* Google Gemini
+
+### Infrastructure & Deployment
+
+* Docker
+* Docker Compose
+* Render
+* Vercel
+* Neon PostgreSQL
 
 ## Live Deployment URLs
 - **Frontend (Vercel)**: https://coverage-iq-ai.vercel.app
@@ -125,7 +156,7 @@ FastAPI automatically generates an interactive OpenAPI (Swagger) dashboard for a
 - **`POST /api/reports/{id}/analyze`**: Triggers AST tree parsing, gap detection, and risk scoring.
 - **`GET /api/reports/{id}`**: Retrieves the full JSON metadata of a parsed report.
 
-## Example Workflow (Reviewer Guide)
+## Reviewer Workflow
 
 Follow these steps to experience the full intelligence loop:
 
@@ -142,15 +173,7 @@ Follow these steps to experience the full intelligence loop:
    - **AI Test Generation**: Actionable, generated `pytest` snippets for the riskiest gaps.
    - **Coverage Improvement Prediction**: Calculated percentage bump if AI tests are applied.
 
-## Sample Output
-Upon successful analysis, the dashboard will render:
-- **Coverage %**: 51.4%
-- **Functions Found**: 7
-- **Gaps Detected**: 2 Uncovered, 2 Partially Covered
-- **Risk Assessment**: 2 Medium Risk, 5 Low Risk
-- **AI Generated Tests**: The system will automatically present `pytest` assertions for the uncovered `transfer_funds` and `process_loan` functions.
-
-## Test Generation Example
+## Sample Input
 **Input (Untested Code):**
 ```python
 def process_loan(amount, score):
@@ -173,6 +196,14 @@ def test_process_loan_high_amount_mid_score():
 def test_process_loan_approved():
     assert process_loan(50000, 750) == True
 ```
+
+## Sample Output
+Upon successful analysis, the dashboard will render:
+- **Coverage %**: 51.4%
+- **Functions Found**: 7
+- **Gaps Detected**: 2 Uncovered, 2 Partially Covered
+- **Risk Assessment**: 2 Medium Risk, 5 Low Risk
+- **AI Generated Tests**: The system will automatically present `pytest` assertions for the uncovered `transfer_funds` and `process_loan` functions.
 
 ## Governance Features
 - **Immutable Audit Trail**: Every upload, scan, and generation event is recorded in the `AuditLog` table.
