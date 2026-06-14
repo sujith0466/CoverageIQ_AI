@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<coverage branch-rate="0" branches-covered="0" branches-valid="0" complexity="0" line-rate="0" lines-covered="0" lines-valid="12" timestamp="1710000000" version="6.2">
+  <sources>
+    <source>/workspace/sample_projects/legacy_system</source>
+  </sources>
+  <packages>
+    <package branch-rate="0" complexity="0" line-rate="0" name="legacy_system">
+      <classes>
+        <class branch-rate="0" complexity="0" filename="legacy.py" line-rate="0" name="legacy.py">
+          <methods/>
+          <lines>
+            <line hits="0" number="1"/>
+            <line hits="0" number="2"/>
+            <line hits="0" number="3"/>
+            <line hits="0" number="4"/>
+            <line hits="0" number="6"/>
+            <line hits="0" number="7"/>
+            <line hits="0" number="8"/>
+            <line hits="0" number="9"/>
+            <line hits="0" number="10"/>
+            <line hits="0" number="12"/>
+            <line hits="0" number="14"/>
+            <line hits="0" number="15"/>
+            <line hits="0" number="16"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

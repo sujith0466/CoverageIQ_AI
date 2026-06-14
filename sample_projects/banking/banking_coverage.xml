@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage lines-valid="35" lines-covered="18" line-rate="0.514" branches-valid="14" branches-covered="7" branch-rate="0.5" timestamp="1718280000" complexity="1.5" version="7.4.0">
+    <sources>
+        <source>.</source>
+    </sources>
+    <packages>
+        <package name="banking" line-rate="0.514" branch-rate="0.5" complexity="1.5">
+            <classes>
+                <class name="banking" filename="banking/banking.py" line-rate="0.514" branch-rate="0.5" complexity="1.5">
+                    <methods/>
+                    <lines>
+                        <!-- __init__: COVERED -->
+                        <line number="7" hits="5"/>
+                        <line number="8" hits="5"/>
+                        <line number="9" hits="5"/>
+                        <line number="10" hits="5"/>
+                        <!-- deposit: COVERED (100%) -->
+                        <line number="13" hits="3"/>
+                        <line number="14" hits="3"/>
+                        <line number="15" hits="3"/>
+                        <line number="16" hits="3"/>
+                        <line number="17" hits="3"/>
+                        <!-- withdraw: PARTIAL (50%) -->
+                        <line number="20" hits="2"/>
+                        <line number="21" hits="0"/>
+                        <line number="22" hits="2"/>
+                        <line number="23" hits="0"/>
+                        <line number="24" hits="2"/>
+                        <line number="25" hits="2"/>
+                        <!-- transfer: UNCOVERED (0%) -->
+                        <line number="28" hits="0"/>
+                        <line number="29" hits="0"/>
+                        <line number="30" hits="0"/>
+                        <!-- calculate_interest: PARTIAL -->
+                        <line number="34" hits="1"/>
+                        <line number="35" hits="0"/>
+                        <line number="36" hits="1"/>
+                        <!-- get_transaction_history: COVERED -->
+                        <line number="39" hits="1"/>
+                        <!-- close_account: UNCOVERED -->
+                        <line number="43" hits="0"/>
+                        <line number="44" hits="0"/>
+                        <line number="45" hits="0"/>
+                    </lines>
+                </class>
+            </classes>
+        </package>
+    </packages>
+</coverage>

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+sqlalchemy==2.0.30
+asyncpg==0.29.0
+alembic==1.13.1
+pydantic
+pydantic-settings
+greenlet==3.0.3
+python-multipart
+groq
+google-generativeai
+email-validator
+defusedxml

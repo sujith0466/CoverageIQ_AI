@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<coverage lines-valid="48" lines-covered="12" line-rate="0.25" branches-valid="20" branches-covered="5" branch-rate="0.25" timestamp="1718280002" complexity="2.0" version="7.4.0">
+    <sources><source>.</source></sources>
+    <packages>
+        <package name="auth" line-rate="0.25" branch-rate="0.25" complexity="2.0">
+            <classes>
+                <class name="auth" filename="auth/auth.py" line-rate="0.25" branch-rate="0.25" complexity="2.0">
+                    <methods/>
+                    <lines>
+                        <!-- __init__: COVERED -->
+                        <line number="10" hits="2"/><line number="11" hits="2"/><line number="12" hits="2"/>
+                        <!-- register: PARTIAL (40%) -->
+                        <line number="15" hits="3"/><line number="16" hits="3"/>
+                        <line number="17" hits="0"/><line number="18" hits="0"/>
+                        <line number="19" hits="3"/><line number="20" hits="0"/>
+                        <!-- login: COVERED -->
+                        <line number="24" hits="4"/><line number="25" hits="4"/>
+                        <line number="26" hits="4"/><line number="27" hits="2"/>
+                        <line number="28" hits="2"/>
+                        <!-- logout: PARTIAL (50%) -->
+                        <line number="32" hits="2"/>
+                        <line number="33" hits="0"/>
+                        <line number="34" hits="2"/>
+                        <!-- reset_password: UNCOVERED -->
+                        <line number="38" hits="0"/><line number="39" hits="0"/>
+                        <line number="40" hits="0"/><line number="41" hits="0"/>
+                        <!-- verify_email: UNCOVERED -->
+                        <line number="45" hits="0"/><line number="46" hits="0"/>
+                        <line number="47" hits="0"/><line number="48" hits="0"/>
+                        <!-- _hash_password, _verify_password, _generate_verification_code: UNCOVERED -->
+                        <line number="52" hits="0"/>
+                        <line number="55" hits="0"/>
+                        <line number="58" hits="0"/>
+                    </lines>
+                </class>
+            </classes>
+        </package>
+    </packages>
+</coverage>

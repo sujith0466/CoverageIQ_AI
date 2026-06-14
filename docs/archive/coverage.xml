@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<coverage branch-rate="0.5" branches-covered="10" branches-valid="20" complexity="0" line-rate="0.65" lines-covered="35" lines-valid="55" timestamp="1710000000" version="6.2">
+    <!-- Generated for CoverageIQ AI Testing -->
+    <sources>
+        <source>sample_project</source>
+    </sources>
+    <packages>
+        <package branch-rate="0.5" complexity="0" line-rate="0.6" name="utils">
+            <classes>
+                <class branch-rate="0.5" complexity="0" filename="utils/validators.py" line-rate="0.5" name="validators.py">
+                    <methods/>
+                    <lines>
+                        <!-- validate_email (Covered) -->
+                        <line hits="1" number="5"/>
+                        <line hits="1" number="6"/>
+                        <line hits="1" number="7"/>
+                        <line hits="1" number="8"/>
+                        <!-- validate_password_strength (Partial) -->
+                        <line hits="1" number="12"/>
+                        <line hits="1" number="13"/>
+                        <line hits="0" number="14"/>
+                        <line hits="0" number="15"/>
+                        <line hits="1" number="16"/>
+                        <!-- is_valid_username (Uncovered) -->
+                        <line hits="0" number="20"/>
+                        <line hits="0" number="21"/>
+                        <line hits="0" number="22"/>
+                    </lines>
+                </class>
+            </classes>
+        </package>
+        <package branch-rate="0.5" complexity="0" line-rate="0.7" name="services">
+            <classes>
+                <class branch-rate="0.5" complexity="0" filename="services/auth_service.py" line-rate="0.6" name="auth_service.py">
+                    <methods/>
+                    <lines>
+                        <!-- login (Covered) -->
+                        <line hits="1" number="6"/>
+                        <line hits="1" number="7"/>
+                        <line hits="1" number="8"/>
+                        <line hits="1" number="9"/>
+                        <line hits="1" number="10"/>
+                        <!-- register (Partial) -->
+                        <line hits="1" number="14"/>
+                        <line hits="0" number="15"/>
+                        <line hits="1" number="16"/>
+                        <line hits="1" number="17"/>
+                        <line hits="1" number="18"/>
+                        <!-- logout (Uncovered) -->
+                        <line hits="0" number="22"/>
+                        <line hits="0" number="23"/>
+                        <!-- reset_password (0 Executable lines/Unknown, so no line hits) -->
+                    </lines>
+                </class>
+                <class branch-rate="0.5" complexity="0" filename="services/user_service.py" line-rate="0.75" name="user_service.py">
+                    <methods/>
+                    <lines>
+                        <!-- get_user (Covered) -->
+                        <line hits="1" number="4"/>
+                        <line hits="1" number="5"/>
+                        <line hits="1" number="6"/>
+                        <!-- update_profile (Partial) -->
+                        <line hits="1" number="10"/>
+                        <line hits="0" number="11"/>
+                        <line hits="1" number="12"/>
+                        <line hits="1" number="13"/>
+                        <line hits="1" number="14"/>
+                        <!-- delete_account (Uncovered) -->
+                        <line hits="0" number="18"/>
+                        <line hits="0" number="19"/>
+                        <line hits="0" number="20"/>
+                        <!-- calculate_profile_completion (Covered) -->
+                        <line hits="1" number="24"/>
+                        <line hits="1" number="25"/>
+                        <line hits="1" number="26"/>
+                    </lines>
+                </class>
+                <class branch-rate="0.5" complexity="0" filename="services/payment_service.py" line-rate="0.7" name="payment_service.py">
+                    <methods/>
+                    <lines>
+                        <!-- process_payment (Covered) -->
+                        <line hits="1" number="4"/>
+                        <line hits="1" number="5"/>
+                        <line hits="1" number="6"/>
+                        <line hits="1" number="7"/>
+                        <line hits="1" number="8"/>
+                        <!-- refund_payment (Partial) -->
+                        <line hits="1" number="12"/>
+                        <line hits="1" number="13"/>
+                        <line hits="0" number="14"/>
+                        <line hits="0" number="15"/>
+                        <line hits="1" number="16"/>
+                        <!-- calculate_tax (Uncovered) -->
+                        <line hits="0" number="20"/>
+                        <line hits="0" number="21"/>
+                        <line hits="0" number="22"/>
+                        <line hits="0" number="23"/>
+                        <line hits="0" number="24"/>
+                        <!-- generate_invoice (Covered) -->
+                        <line hits="1" number="28"/>
+                    </lines>
+                </class>
+            </classes>
+        </package>
+    </packages>
+</coverage>
