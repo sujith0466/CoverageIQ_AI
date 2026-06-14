@@ -31,7 +31,22 @@ The system follows a modern decoupled architecture:
 - **AI Providers**: Groq (Llama 3) and Google Gemini via LangChain-compatible integrations.
 - **Containerization**: Fully orchestrated via Docker Compose with strict healthcheck probing.
 
+```mermaid
+graph TD
+    A[Frontend React Dashboard] -->|REST API| B[Backend FastAPI Server]
+    B --> C[XML Parser & Gap Detector]
+    B --> D[AST Code Walker]
+    B --> E[Risk Engine]
+    B --> F[PostgreSQL / Neon DB]
+    E --> G[Test Generator Service]
+    G --> H[Groq Llama 3 / Gemini]
+```
+
 *For more details, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).*
+
+## Live Deployment URLs
+- **Frontend (Vercel)**: https://coverage-iq-ai.vercel.app
+- **Backend (Render)**: https://coverageiq-ai.onrender.com
 
 ## Setup Instructions
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<coverage lines-valid="40" lines-covered="22" line-rate="0.55" branches-valid="16" branches-covered="9" branch-rate="0.5625" timestamp="1718280001" complexity="1.6" version="7.4.0">
+    <sources><source>.</source></sources>
+    <packages>
+        <package name="ecommerce" line-rate="0.55" branch-rate="0.5625" complexity="1.6">
+            <classes>
+                <class name="ecommerce" filename="ecommerce/ecommerce.py" line-rate="0.55" branch-rate="0.5625" complexity="1.6">
+                    <methods/>
+                    <lines>
+                        <!-- __init__: COVERED -->
+                        <line number="8" hits="3"/>
+                        <line number="9" hits="3"/>
+                        <!-- add_to_cart: COVERED -->
+                        <line number="12" hits="4"/><line number="13" hits="4"/><line number="14" hits="4"/>
+                        <line number="15" hits="3"/><line number="16" hits="3"/><line number="17" hits="2"/>
+                        <line number="18" hits="2"/>
+                        <!-- remove_from_cart: PARTIAL -->
+                        <line number="22" hits="2"/><line number="23" hits="2"/>
+                        <line number="24" hits="0"/>
+                        <!-- checkout: COVERED -->
+                        <line number="28" hits="3"/><line number="29" hits="3"/>
+                        <line number="30" hits="3"/><line number="31" hits="3"/>
+                        <!-- process_payment: PARTIAL (50%) -->
+                        <line number="35" hits="2"/><line number="36" hits="2"/>
+                        <line number="37" hits="0"/><line number="38" hits="0"/>
+                        <line number="39" hits="2"/><line number="40" hits="2"/>
+                        <!-- refund_order: UNCOVERED -->
+                        <line number="44" hits="0"/><line number="45" hits="0"/>
+                        <line number="46" hits="0"/>
+                        <!-- apply_discount: UNCOVERED -->
+                        <line number="50" hits="0"/><line number="51" hits="0"/>
+                        <line number="52" hits="0"/>
+                    </lines>
+                </class>
+            </classes>
+        </package>
+    </packages>
+</coverage>
