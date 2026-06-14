@@ -21,10 +21,18 @@ The simplest deployment utilizes the bundled `docker-compose.yml`.
 # 1. Clone the repository
 git clone https://github.com/sujith0466/CoverageIQ_AI.git
 cd CoverageIQ_AI
+# 2. Environment Variables
 
-# 2. Populate Environments
-cp .env.example .env
-# Edit .env with your production database URL, SECRET_KEY, and LLM keys.
+Required Environment Variables
+
+Frontend:
+* VITE_API_URL
+
+Backend:
+* DATABASE_URL
+* SECRET_KEY
+* GROQ_API_KEY
+* GEMINI_API_KEY (optional)
 
 # 3. Spin up
 docker-compose up -d --build

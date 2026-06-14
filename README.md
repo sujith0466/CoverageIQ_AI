@@ -42,19 +42,17 @@ The system follows a modern decoupled architecture:
 - PostgreSQL Database URL (Neon or local)
 
 ### 2. Environment Variables
-You must configure your API keys and secrets before starting the system.
 
-Copy the example file to create your local environment file:
-```bash
-cp .env.example .env
-```
+Required Environment Variables
 
-**Required Environment Variables**
-* `GROQ_API_KEY` (or `GEMINI_API_KEY`)
-* `DATABASE_URL`
-* `SECRET_KEY`
+Frontend:
+* VITE_API_URL
 
-*(Note: Never commit your `.env` file or expose your `SECRET_KEY`. Keep them strictly local.)*
+Backend:
+* DATABASE_URL
+* SECRET_KEY
+* GROQ_API_KEY
+* GEMINI_API_KEY (optional)
 
 ## Run Instructions
 
