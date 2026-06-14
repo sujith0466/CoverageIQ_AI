@@ -50,3 +50,6 @@ logs/
 audit_output.json
 ast_test_output.json
 *.log
+
+# Local Archives
+.local_archive/
