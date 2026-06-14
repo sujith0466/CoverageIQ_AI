@@ -8,35 +8,17 @@ CoverageIQ AI is a next-generation code coverage analysis and intelligent test g
 Gap Sentinels
 
 ## Team Members
-- Sujith Kumar
-- Hima Bindu
-- Dhanusha
+- [Sujith Kumar](./resumes/Sujith_Kumar_Resume_AI_FullStack.pdf)
+- [Hima Bindu](./resumes/HimaBindu_Resume.pdf)
+- [Dhanusha](./resumes/Dhanusha_Resume.pdf)
 
 ## Quick Links
-
-Demo Video:
-https://drive.google.com/file/d/1INa59mjqfxON3Spp-jbgTaSrZtVBVMRZ/view?usp=sharing
-
-AI Usage Note:
-./ai_usage_note.md
-
-Prompt Documentation:
-./prompts.md
-
-Architecture:
-./docs/ARCHITECTURE.md
-
-Sample Data:
-./sample_data
-
-Test Cases:
-./tests
-
-Team Resumes:
-
-- Sujith Kumar → ./resumes/Sujith_Kumar_Resume.pdf
-- Hima Bindu → ./resumes/Hima_Bindu_Resume.pdf
-- Dhanusha → ./resumes/Dhanusha_Resume.pdf
+- [Demo Video](https://drive.google.com/file/d/1INa59mjqfxON3Spp-jbgTaSrZtVBVMRZ/view?usp=sharing)
+- [AI Usage Note](./ai_usage_note.md)
+- [Prompt Documentation](./prompts.md)
+- [Architecture](./docs/ARCHITECTURE.md)
+- [Sample Data](./sample_data)
+- [Test Cases](./tests)
 
 
 ## Problem Statement
@@ -212,4 +194,3 @@ def test_process_loan_approved():
 
 ## AI Usage Note
 This project heavily utilizes AI assistance (via Google Gemini) for rapid prototyping, architecture planning, and feature implementation. See [./ai_usage_note.md](./ai_usage_note.md) for full disclosure of AI tooling used during development.
-
