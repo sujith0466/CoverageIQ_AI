@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { reportClient, GovernanceOverviewResponse, ReportHistoryResponse } from '../api/reportClient';
 import { Clock, Server } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 export function GovernanceOverviewCards() {
   const [data, setData] = useState<GovernanceOverviewResponse | null>(null);
@@ -97,12 +96,13 @@ export function ReportHistoryTable() {
     return (
       <section className="w-full py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold text-white mb-6 flex items-center"><Clock className="mr-2 text-indigo-400" /> Recent Reports</h2>
+          <h2 className="text-2xl font-bold text-white mb-1 flex items-center"><Clock className="mr-2 text-indigo-400" /> Recent Reports</h2>
+          <p className="text-slate-400 text-sm mb-6">Latest 10 analysis runs</p>
           <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden animate-pulse">
             <table className="w-full text-left">
               <thead className="bg-slate-800/50 text-slate-400 text-sm border-b border-slate-800">
                 <tr>
-                  <th className="p-4">Date</th><th className="p-4">Coverage</th><th className="p-4">Files</th><th className="p-4">Functions</th><th className="p-4">Tests Gen</th><th className="p-4">Latest Audit Status</th><th className="p-4">Action</th>
+                  <th className="p-4">Date</th><th className="p-4">Coverage</th><th className="p-4">Files</th><th className="p-4">Functions</th><th className="p-4">Tests Gen</th><th className="p-4">Latest Audit Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -114,7 +114,6 @@ export function ReportHistoryTable() {
                     <td className="p-4"><div className="h-4 bg-slate-800 rounded w-16"></div></td>
                     <td className="p-4"><div className="h-4 bg-slate-800 rounded w-16"></div></td>
                     <td className="p-4"><div className="h-6 bg-slate-800 rounded-full w-24"></div></td>
-                    <td className="p-4"><div className="h-8 bg-slate-800 rounded w-20"></div></td>
                   </tr>
                 ))}
               </tbody>
@@ -127,10 +126,15 @@ export function ReportHistoryTable() {
 
   if (!data || data.reports.length === 0) return null;
 
+  const sortedReports = [...data.reports]
+    .sort((a, b) => new Date(b.uploaded_at).getTime() - new Date(a.uploaded_at).getTime())
+    .slice(0, 10);
+
   return (
     <section className="w-full py-12 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold text-white mb-6 flex items-center"><Clock className="mr-2 text-indigo-400" /> Recent Reports</h2>
+        <h2 className="text-2xl font-bold text-white mb-1 flex items-center"><Clock className="mr-2 text-indigo-400" /> Recent Reports</h2>
+        <p className="text-slate-400 text-sm mb-6">Latest 10 analysis runs</p>
         <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
           <table className="w-full text-left">
             <thead className="bg-slate-800/50 text-slate-400 text-sm border-b border-slate-800">
@@ -141,11 +145,10 @@ export function ReportHistoryTable() {
                 <th className="p-4 font-medium">Functions</th>
                 <th className="p-4 font-medium">Tests Gen</th>
                 <th className="p-4 font-medium">Latest Audit Status</th>
-                <th className="p-4 font-medium">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800">
-              {data.reports.map((report) => (
+              {sortedReports.map((report) => (
                 <tr key={report.report_id} className="hover:bg-slate-800/20 transition-colors">
                   <td className="p-4 text-slate-300">{new Date(report.uploaded_at).toLocaleString()}</td>
                   <td className="p-4 text-white font-medium">{report.coverage_percent ?? 0}%</td>
@@ -153,9 +156,6 @@ export function ReportHistoryTable() {
                   <td className="p-4 text-slate-300">{report.functions_found}</td>
                   <td className="p-4 text-emerald-400 font-medium">{report.tests_generated}</td>
                   <td className="p-4 text-indigo-300 text-sm">{report.latest_status || 'UNKNOWN'}</td>
-                  <td className="p-4">
-                    <Link to={`/dashboard?reportId=${report.report_id}`} className="text-blue-400 hover:text-blue-300 text-sm font-medium">View Dashboard</Link>
-                  </td>
                 </tr>
               ))}
             </tbody>

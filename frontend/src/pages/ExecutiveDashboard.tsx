@@ -12,28 +12,34 @@ export default function ExecutiveDashboard() {
   useEffect(() => {
     async function fetchDashboard() {
       setIsLoading(true);
-      let targetReportId = reportId;
+      let activeReportId = reportId || localStorage.getItem('latestReportId') || undefined;
+      console.log("Development Log [Dashboard] - Initial activeReportId:", activeReportId);
       
-      // If no reportId in URL, check localStorage
-      if (!targetReportId) {
-        targetReportId = localStorage.getItem('latestReportId') || undefined;
+      let res: ExecutiveDashboardResponse | null = null;
+      if (activeReportId) {
+        res = await reportClient.getExecutiveDashboard(activeReportId);
       }
-      
-      // If still no reportId, ask API for the latest
-      if (!targetReportId) {
-        const latestRes = await reportClient.getLatestReport();
-        if (latestRes.success && latestRes.report_id) {
-          targetReportId = latestRes.report_id;
+
+      // Fallback: If no report is found or the cached ID is stale/invalid
+      if (!res || !res.success) {
+        console.log("Development Log [Dashboard] - No valid active report. Fetching history fallback...");
+        const historyRes = await reportClient.getReportHistory();
+        console.log("Development Log [Dashboard] - History count:", historyRes.reports?.length || 0);
+        
+        if (historyRes.success && historyRes.reports && historyRes.reports.length > 0) {
+          // Sort newest first to guarantee we select the latest available report
+          const sorted = [...historyRes.reports].sort((a, b) => new Date(b.uploaded_at).getTime() - new Date(a.uploaded_at).getTime());
+          const selectedReportId = sorted[0].report_id;
+          console.log("Development Log [Dashboard] - Selected newest report:", selectedReportId);
+          
+          res = await reportClient.getExecutiveDashboard(selectedReportId);
+          if (res && res.success) {
+            localStorage.setItem('latestReportId', selectedReportId);
+          }
         }
       }
-      
-      if (!targetReportId) {
-        setDashboardResult(null);
-        setIsLoading(false);
-        return;
-      }
-      
-      const res = await reportClient.getExecutiveDashboard(targetReportId);
+
+      console.log("Development Log [Dashboard] - Final API response:", res);
       setDashboardResult(res);
       setIsLoading(false);
     }
@@ -171,23 +177,6 @@ export default function ExecutiveDashboard() {
           </div>
         </div>
         
-        {/* Trends Placeholders */}
-        <div className="bg-slate-900/50 border border-slate-800 border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-slate-500 min-h-[120px]">
-          <TrendingUp size={24} className="mb-2 opacity-50" />
-          <span className="text-sm font-medium">Coverage Trend Analytics</span>
-          <span className="text-xs mt-1">Coming in next update</span>
-        </div>
-        <div className="bg-slate-900/50 border border-slate-800 border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-slate-500 min-h-[120px]">
-          <ShieldAlert size={24} className="mb-2 opacity-50" />
-          <span className="text-sm font-medium">Risk Trend Analytics</span>
-          <span className="text-xs mt-1">Coming in next update</span>
-        </div>
-        <div className="bg-slate-900/50 border border-slate-800 border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-slate-500 min-h-[120px]">
-          <ActivitySquare size={24} className="mb-2 opacity-50" />
-          <span className="text-sm font-medium">Quality Trend Analytics</span>
-          <span className="text-xs mt-1">Coming in next update</span>
-        </div>
-
       </div>
 
       {/* Recent Reports / Report History */}
