@@ -23,7 +23,20 @@ export function GovernanceOverviewCards() {
     fetchGov();
   }, []);
 
-  if (loading || !data) return null;
+  if (loading || !data) {
+    return (
+      <section className="w-full py-12 px-6 border-b border-slate-800 bg-slate-900/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center"><Server className="mr-2 text-indigo-400" /> System Governance & Intelligence</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 animate-pulse">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bg-slate-800 p-4 rounded-xl border border-slate-700 h-24"></div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full py-12 px-6 border-b border-slate-800 bg-slate-900/50">
@@ -80,7 +93,39 @@ export function ReportHistoryTable() {
     fetchHistory();
   }, []);
 
-  if (loading || !data || data.reports.length === 0) return null;
+  if (loading) {
+    return (
+      <section className="w-full py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center"><Clock className="mr-2 text-indigo-400" /> Recent Reports</h2>
+          <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden animate-pulse">
+            <table className="w-full text-left">
+              <thead className="bg-slate-800/50 text-slate-400 text-sm border-b border-slate-800">
+                <tr>
+                  <th className="p-4">Date</th><th className="p-4">Coverage</th><th className="p-4">Files</th><th className="p-4">Functions</th><th className="p-4">Tests Gen</th><th className="p-4">Latest Audit Status</th><th className="p-4">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[...Array(3)].map((_, i) => (
+                  <tr key={i} className="border-b border-slate-800/50">
+                    <td className="p-4"><div className="h-4 bg-slate-800 rounded w-24"></div></td>
+                    <td className="p-4"><div className="h-4 bg-slate-800 rounded w-16"></div></td>
+                    <td className="p-4"><div className="h-4 bg-slate-800 rounded w-12"></div></td>
+                    <td className="p-4"><div className="h-4 bg-slate-800 rounded w-16"></div></td>
+                    <td className="p-4"><div className="h-4 bg-slate-800 rounded w-16"></div></td>
+                    <td className="p-4"><div className="h-6 bg-slate-800 rounded-full w-24"></div></td>
+                    <td className="p-4"><div className="h-8 bg-slate-800 rounded w-20"></div></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!data || data.reports.length === 0) return null;
 
   return (
     <section className="w-full py-12 px-6">

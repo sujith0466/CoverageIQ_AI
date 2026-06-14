@@ -1,7 +1,7 @@
 // import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldAlert, GitCommit, PlayCircle, BarChart3, FolderSearch, Zap } from 'lucide-react';
-import { GovernanceOverviewCards, ReportHistoryTable } from '../components/GovernanceComponents';
+import { GovernanceOverviewCards } from '../components/GovernanceComponents';
 
 export default function LandingPage() {
   return (
@@ -34,7 +34,6 @@ export default function LandingPage() {
 
       {/* Governance & History */}
       <GovernanceOverviewCards />
-      <ReportHistoryTable />
 
       {/* Feature Highlights */}
       <section className="w-full max-w-7xl mx-auto py-24 px-6">

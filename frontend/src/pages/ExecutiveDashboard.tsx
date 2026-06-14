@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { reportClient, ExecutiveDashboardResponse } from '../api/reportClient';
 import { ShieldAlert, Activity, ActivitySquare, Loader2, TrendingUp, LayoutDashboard, CheckCircle2 } from 'lucide-react';
+import { ReportHistoryTable } from '../components/GovernanceComponents';
 
 export default function ExecutiveDashboard() {
   const { reportId } = useParams();
@@ -187,6 +188,11 @@ export default function ExecutiveDashboard() {
           <span className="text-xs mt-1">Coming in next update</span>
         </div>
 
+      </div>
+
+      {/* Recent Reports / Report History */}
+      <div className="mt-12">
+        <ReportHistoryTable />
       </div>
     </div>
   );
