@@ -224,4 +224,4 @@ Upon successful analysis, the dashboard will render:
 - Automated sandbox execution to auto-verify generated tests.
 
 ## AI Usage Note
-This project heavily utilizes AI assistance (via Google Gemini) for rapid prototyping, architecture planning, and feature implementation. See [./ai_usage_note.md](./ai_usage_note.md) for full disclosure of AI tooling used during development.
+This project heavily utilizes AI assistance (via Google Gemini) for rapid prototyping, architecture planning, and feature implementation. See [AI Usage Note](./ai_usage_note.md) for full disclosure of AI tooling used during development.
