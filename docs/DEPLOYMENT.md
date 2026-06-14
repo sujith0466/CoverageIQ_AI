@@ -23,8 +23,8 @@ git clone https://github.com/sujith0466/CoverageIQ_AI.git
 cd CoverageIQ_AI
 
 # 2. Populate Environments
-cp backend/.env.example backend/.env
-# Edit backend/.env with your production database URL and LLM keys.
+cp .env.example .env
+# Edit .env with your production database URL, SECRET_KEY, and LLM keys.
 
 # 3. Spin up
 docker-compose up -d --build
@@ -47,4 +47,4 @@ docker-compose up -d --build
 ### Neon (Database)
 1. Provision a Serverless Postgres cluster.
 2. Copy the `postgresql://` string.
-3. Append `+asyncpg` to the driver format in your backend `.env` (e.g., `postgresql+asyncpg://...`).
+3. Append `+asyncpg` to the driver format in your `.env` (e.g., `postgresql+asyncpg://...`).
