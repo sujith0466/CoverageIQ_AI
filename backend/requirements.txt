@@ -1,11 +1,11 @@
 fastapi
 uvicorn[standard]
-sqlalchemy==2.0.30
-asyncpg==0.29.0
+sqlalchemy>=2.0.36
+asyncpg>=0.30.0
 alembic==1.13.1
 pydantic
 pydantic-settings
-greenlet==3.0.3
+greenlet>=3.1.1
 python-multipart
 groq
 google-generativeai
