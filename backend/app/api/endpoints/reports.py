@@ -142,6 +142,15 @@ async def scan_codebase(
 
     await log_event(db, "PROJECT_ROOT_SCANNED", report_id=report_id, details={"directory": request.directory_path})
     await log_event(db, "AST_SCAN_STARTED", report_id=report_id)
+    
+    print("=" * 50)
+    print("STEP 1: FASTAPI ENDPOINT HIT")
+    print(f"REPORT ID: {repr(report_id)}")
+    print(f"RAW PATH: {repr(request.directory_path)}")
+    print(f"PATH TYPE: {type(request.directory_path)}")
+    print(f"PATH LENGTH: {len(request.directory_path)}")
+    print("=" * 50)
+    
     scan_result = ASTWalkerService.scan_directory(request.directory_path, report_id)
     await log_event(db, "AST_SCAN_COMPLETED", report_id=report_id, details={"functions_found": scan_result.get("total", 0)})
 

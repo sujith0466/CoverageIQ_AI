@@ -161,7 +161,11 @@ export default function UploadReport() {
     setDependencyResult(null);
     setPredictionResult(null);
 
+    console.log("ENVIRONMENT VITE_API_URL:", import.meta.env.VITE_API_URL);
+    console.log("SCAN REQUEST payload:", { directory_path: scanPath });
     const res = await reportClient.scanCode(uploadResult.report_id, scanPath);
+    console.log("SCAN RESPONSE:", res);
+    
     setScanResult(res);
     setIsScanning(false);
   };
@@ -431,7 +435,7 @@ gapResult.uncovered || 0) + (gapResult.partial || 0);
             <div className="flex space-x-3">
               <input
                 type="text"
-                placeholder="/app/backend or ./src"
+                placeholder="/workspace/sample_projects/banking"
                 value={scanPath}
                 onChange={(e) => setScanPath(e.target.value)}
                 className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
@@ -444,6 +448,27 @@ gapResult.uncovered || 0) + (gapResult.partial || 0);
                 {isScanning ? <Loader2 className="animate-spin" size={20} /> : <Code size={20} />}
                 <span>{isScanning ? 'Scanning...' : 'Scan AST'}</span>
               </button>
+            </div>
+            {/^[a-zA-Z]:\\/.test(scanPath) && (
+              <div className="mt-3 p-3 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-lg text-sm flex items-start space-x-2">
+                <AlertCircle className="shrink-0 mt-0.5" size={16} />
+                <div>
+                  <strong>You appear to be using a host machine path.</strong><br/>
+                  When running via Docker Compose, use container paths such as:<br/>
+                  <code className="text-amber-300 mt-1 block">/workspace/sample_projects/banking</code>
+                </div>
+              </div>
+            )}
+            <div className="mt-4 text-sm text-slate-400 bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
+              <p className="font-semibold text-slate-300 mb-2">Running via Docker?</p>
+              <p className="mb-2">Use one of the sample project paths:</p>
+              <ul className="space-y-1 font-mono text-xs text-blue-400">
+                <li>/workspace/sample_projects/banking</li>
+                <li>/workspace/sample_projects/auth</li>
+                <li>/workspace/sample_projects/ecommerce</li>
+                <li>/workspace/sample_projects/inventory</li>
+                <li>/workspace/sample_projects/legacy_system</li>
+              </ul>
             </div>
           </div>
 

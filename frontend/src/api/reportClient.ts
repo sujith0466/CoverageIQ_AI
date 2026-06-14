@@ -263,12 +263,15 @@ export const reportClient = {
 
   scanCode: async (reportId: string, directoryPath: string): Promise<ScanResponse> => {
     try {
-      const response = await axios.post(`${API_URL}/api/reports/${reportId}/scan`, {
-        directory_path: directoryPath
-      });
+      const payload = { directory_path: directoryPath };
+      console.log("[reportClient] AST Scan Payload:", payload);
+      const response = await axios.post(`${API_URL}/api/reports/${reportId}/scan`, payload);
+      console.log("[reportClient] AST Scan Response:", response.data);
       return response.data;
     } catch (error: any) {
+      console.error("[reportClient] AST Scan Exception caught:", error);
       if (error.response && error.response.data) {
+        console.error("[reportClient] AST Scan Error Response Data:", error.response.data);
         return error.response.data as ScanResponse;
       }
       return {

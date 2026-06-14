@@ -18,17 +18,38 @@ class ASTWalkerService:
 
     @classmethod
     def scan_directory(cls, directory_path: str, report_id: str) -> Dict[str, Any]:
-        if not os.path.exists(directory_path) or not os.path.isdir(directory_path):
-            return {"success": False, "message": "Invalid directory path."}
+        print("=" * 50)
+        print("STEP 2: ASTWalkerService.scan_directory HIT")
+        print(f"RAW DIRECTORY_PATH: {repr(directory_path)}")
+        
+        # FIX: Strip whitespace and quotes that users might accidentally paste
+        cleaned_path = directory_path.strip(' "\'\n\r')
+        print(f"CLEANED PATH: {repr(cleaned_path)}")
+        
+        exists = os.path.exists(cleaned_path)
+        isdir = os.path.isdir(cleaned_path)
+        print(f"os.path.exists({repr(cleaned_path)}): {exists}")
+        print(f"os.path.isdir({repr(cleaned_path)}): {isdir}")
+        print("=" * 50)
+        
+        if not exists or not isdir:
+            return {
+                "success": False, 
+                "message": "Invalid directory path.\n\nIf running with Docker Compose, use a mounted container path such as:\n/workspace/sample_projects/banking\n\nSee sample_data/usage_instructions.md for examples."
+            }
             
         functions = []
-        for root, dirs, files in os.walk(directory_path):
+        for root, dirs, files in os.walk(cleaned_path):
+            # Skip ignored directories
             dirs[:] = [d for d in dirs if d not in cls.IGNORE_DIRS]
+            
             for file in files:
-                if file.endswith('.py'):
-                    file_path = os.path.join(root, file)
-                    funcs = cls._parse_file(file_path, report_id)
-                    functions.extend(funcs)
+                if not file.endswith('.py'):
+                    continue
+                    
+                file_path = os.path.join(root, file)
+                funcs = cls._parse_file(file_path, report_id)
+                functions.extend(funcs)
                     
         return {"success": True, "functions": functions, "total": len(functions)}
 
