@@ -2,6 +2,43 @@
 
 CoverageIQ AI is a next-generation code coverage analysis and intelligent test generation platform. It moves beyond static percentage tracking by integrating AST-based static code analysis with Generative AI (Groq & Gemini) to identify untested code, quantify risk, and autonomously write test suites.
 
+# Team Information
+
+## Team Name
+Gap Sentinels
+
+## Team Members
+- Sujith Kumar
+- Hima Bindu
+- Dhanusha
+
+## Quick Links
+
+Demo Video:
+https://drive.google.com/file/d/1INa59mjqfxON3Spp-jbgTaSrZtVBVMRZ/view?usp=sharing
+
+AI Usage Note:
+./ai_usage_note.md
+
+Prompt Documentation:
+./prompts.md
+
+Architecture:
+./docs/ARCHITECTURE.md
+
+Sample Data:
+./sample_data
+
+Test Cases:
+./tests
+
+Team Resumes:
+
+- Sujith Kumar → ./resumes/Sujith_Kumar_Resume.pdf
+- Hima Bindu → ./resumes/Hima_Bindu_Resume.pdf
+- Dhanusha → ./resumes/Dhanusha_Resume.pdf
+
+
 ## Problem Statement
 Traditional test coverage tools offer blind percentages (e.g., "75% covered") without providing context on **what** is uncovered or **why** it matters. Engineering teams lack visibility into whether critical business logic is missing tests, and they spend significant manual effort writing boilerplate tests to fill gaps.
 
@@ -113,7 +150,9 @@ Follow these steps to experience the full intelligence loop:
 1. **Start Backend**: Run `docker-compose up backend` or start natively via `uvicorn`.
 2. **Start Frontend**: Run `npm run dev` in the frontend directory.
 3. **Upload Report**: Navigate to `http://localhost:5173/upload`. Upload the provided sample file: `sample_data/banking_coverage.xml`.
-4. **Map Source Directory**: When prompted for the source code path, enter the absolute path to your local checkout of the banking module (e.g., `C:/path/to/CoverageIQ-AI/sample_projects/banking`).
+4. **Map Source Directory**: When prompted for the source code path, enter the appropriate path:
+   - If running via Docker Compose: `/workspace/sample_projects/banking`
+   - If running natively: `<local-project-path>/sample_projects/banking`
 5. **Run Analysis**: Click "Analyze". The system will dynamically build an AST, reconcile coverage gaps, and invoke Groq/Gemini to write missing tests.
 6. **View Dashboard**: You will be redirected to the Executive Dashboard where you can view:
    - **Coverage Intelligence**: Overall system health score.
@@ -171,12 +210,6 @@ def test_process_loan_approved():
 - Support for JavaScript/TypeScript (LCOV) formats.
 - Automated sandbox execution to auto-verify generated tests.
 
-## Demo Video
-*(Link to Demo Video Placeholder)*
-
 ## AI Usage Note
-This project heavily utilizes AI assistance (via Google Gemini) for rapid prototyping, architecture planning, and feature implementation. See [docs/AI_USAGE_NOTE.md](docs/AI_USAGE_NOTE.md) for full disclosure of AI tooling used during development.
+This project heavily utilizes AI assistance (via Google Gemini) for rapid prototyping, architecture planning, and feature implementation. See [./ai_usage_note.md](./ai_usage_note.md) for full disclosure of AI tooling used during development.
 
-## Contributors
-* Developed as an AI coding prototype challenge submission.
-* **Core Technologies**: Groq, Gemini, React, FastAPI, PostgreSQL.
