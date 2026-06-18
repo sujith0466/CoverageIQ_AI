@@ -12,6 +12,80 @@ Gap Sentinels
 - [Hima Bindu](./resumes/HimaBindu_Resume.pdf)
 - [Dhanusha](./resumes/Dhanusha_Resume.pdf)
 
+## Team Roles & Responsibilities
+
+### Sujith Kumar — Technical Lead, AI & Backend Engineer
+**Responsibilities:**
+- XML Parsing Engine
+- AST Scanner Implementation
+- Coverage Gap Detection
+- Risk Intelligence Engine
+- AI Test Generation (Groq & Gemini)
+- FastAPI Backend Development
+- PostgreSQL / Neon Integration
+- Docker Configuration & Deployment
+- Debugging & Production Fixes
+- System Architecture Design
+
+**Key Contributions:**
+- Implemented AST-based function discovery.
+- Built AI-powered test generation pipeline.
+- Solved XML namespace parsing issues.
+- Resolved Docker path and deployment issues.
+- Led backend architecture and integration.
+
+---
+
+### Hima Bindu — Frontend & User Experience Engineer
+**Responsibilities:**
+- React Frontend Development
+- Dashboard Design
+- File Upload Workflow
+- API Integration
+- User Interface Improvements
+- Reviewer Experience Optimization
+- Data Visualization Components
+
+**Key Contributions:**
+- Developed responsive React dashboard.
+- Integrated backend APIs into frontend workflows.
+- Improved user navigation and usability.
+- Enhanced reviewer and demo experience.
+
+---
+
+### Dhanusha — Quality Assurance & Documentation Lead
+**Responsibilities:**
+- Test Planning & Validation
+- Pytest Test Cases
+- Repository Quality Assurance
+- README Documentation
+- AI Usage Documentation
+- Prompt Documentation
+- Sample Data Preparation
+- Submission Readiness Reviews
+
+**Key Contributions:**
+- Validated XML parser functionality.
+- Maintained testing and quality assurance workflows.
+- Organized submission artifacts.
+- Prepared documentation and reviewer guides.
+- Conducted final repository audits.
+
+---
+
+### Team Collaboration
+
+The project was developed collaboratively under the team name **Gap Sentinels**.
+
+Work was divided into three primary layers:
+
+1. Backend Intelligence & AI Systems
+2. Frontend & User Experience
+3. Testing, Documentation & Quality Assurance
+
+All team members participated in integration testing, project reviews, debugging discussions, and final submission preparation.
+
 ## Quick Links
 - [Demo Video](https://drive.google.com/file/d/1INa59mjqfxON3Spp-jbgTaSrZtVBVMRZ/view?usp=sharing)
 - [AI Usage Note](./ai_usage_note.md)
