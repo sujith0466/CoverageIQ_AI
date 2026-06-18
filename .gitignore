@@ -53,3 +53,4 @@ ast_test_output.json
 
 # Local Archives
 .local_archive/
+*.zip

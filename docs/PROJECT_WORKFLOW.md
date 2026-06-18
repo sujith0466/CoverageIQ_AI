@@ -12,7 +12,7 @@ sequenceDiagram
     participant Risk_Engine
     participant LLM_Generator
 
-    User->>Frontend: Upload coverage.xml + Zip Source
+    User->>Frontend: Upload coverage.xml
     Frontend->>API: POST /api/reports/upload (multipart/form-data)
     API->>Parser: Parse securely (defusedxml)
     Parser-->>API: Extracted lines/branches

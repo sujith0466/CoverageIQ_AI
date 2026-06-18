@@ -6,7 +6,7 @@ CoverageIQ AI demonstrates applied AI engineering in its feature set and its dev
 The platform relies on autonomous Large Language Models to evaluate missing software tests and write syntactic replacements.
 
 - **Engine Primary**: Groq (Llama 3 70b)
-- **Engine Secondary**: Google Gemini (1.5 Pro)
+- **Engine Secondary**: Google Gemini (2.5 Flash)
 - **Context Supplying**: The Python `ast` syntax tree is heavily analyzed, converted to structural hints, and injected into the LLM system prompt to ground the AI with exact line numbers, parameters, and variable states.
 - **Explainability**: We explicitly prompt the AI to define *why* it is recommending a specific test. This outputs to the Governance Traceability view to ensure humans can audit AI behavior.
 
